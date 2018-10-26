@@ -7,4 +7,12 @@ describe Machine, type: :model do
     it { should have_many(:machine_snacks) }
     it { should have_many(:snacks).through(:machine_snacks) }
   end
+  it "should calulate average price of all snacks" do
+    sam = Owner.create(name: "Sam's Snacks")
+    machine = Machine.create(location: "Dons Mixed Drinks", owner: sam)
+    machine.snacks.create(name: "Reeses", price: 9.00)
+    machine.snacks.create(name: "Snickers", price: 3.00)
+
+    expect(machine.average_price).to eq(6.0)
+  end
 end

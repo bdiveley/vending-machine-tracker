@@ -19,7 +19,6 @@ describe "When a user visits the vending machine show page" do
   machine.snacks.create(name: "Snickers", price: 3.00)
 
   visit machine_path(machine)
-
   expect(page).to have_content("Average Price: 6")
   end
 end
